@@ -67,7 +67,7 @@ RUN conda install -y python=${python_version} && \
     pip install git+git://github.com/keras-team/keras.git && \
     conda clean -yt
 
-ADD theanorc /home/keras/.theanorc
+#ADD theanorc /home/keras/.theanorc
 ENV PYTHONPATH='/src/:$PYTHONPATH'
 
 WORKDIR /src
@@ -75,6 +75,8 @@ WORKDIR /src
 EXPOSE 8888
 
 CMD jupyter notebook --port=8888 --ip=0.0.0.0
+
+
 
 # Keras-genomcis specific
 RUN pip install --upgrade --no-deps git+https://github.com/maxpumperla/hyperas
@@ -85,5 +87,7 @@ ENV THEANO_FLAGS='cuda.root=/usr/local/cuda,device=gpu0,floatX=float32,lib.cnmem
 
 RUN git clone https://github.com/gifford-lab/keras-genomics.git /src/keras-genomics
 RUN cp /src/keras-genomics/main.py /src/
-RUN mkdir /runtheano/;chmod -R 777 /runtheano/
+
+USER root
+RUN mkdir /runtheano/; chmod -R 777 /runtheano/
 
