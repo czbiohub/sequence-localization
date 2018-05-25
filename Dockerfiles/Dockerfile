@@ -43,27 +43,27 @@ RUN conda install -y python=${python_version} && \
     pip install --upgrade pip && \
     pip install https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp36-cp36m-linux_x86_64.whl && \
     conda install \
-    bcolz \
-    h5py \
-    matplotlib \
-    mkl \
-    nose \
-    notebook \
-    Pillow \
-    pandas \
-    pygpu \
-    pyyaml \
-    scikit-learn \
-    six \
-    # keras-genomics specific
-    biopython \
-    networkx \
-    pymongo \
-    theano && \
+        bcolz \
+        h5py \
+        matplotlib \
+        mkl \
+        nose \
+        notebook \
+        Pillow \
+        pandas \
+        pygpu \
+        pyyaml \
+        scikit-learn \
+        six \
+        # keras-genomics specific
+        biopython \
+        networkx \
+        pymongo \
+        theano && \
     pip install sklearn_pandas && \
-    git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
+#    git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
     pip install git+git://github.com/keras-team/keras.git && \
-    conda install --yes tensorflow-gpu keras-gpu tensorflow-tensorboard && \
+    conda install --yes tensorflow-gpu keras-gpu && \
     conda clean -yt
 
 #ADD theanorc /home/keras/.theanorc
