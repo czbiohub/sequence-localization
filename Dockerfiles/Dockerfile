@@ -64,7 +64,7 @@ RUN conda install -y python=${python_version} && \
     theano && \
     git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
     pip install git+git://github.com/keras-team/keras.git && \
-    conda install --yes tensorflow-gpu && \
+    conda install --yes tensorflow-gpu keras-gpu && \
     conda clean -yt
 
 #ADD theanorc /home/keras/.theanorc
@@ -90,4 +90,8 @@ RUN cp /src/keras-genomics/main.py /src/
 
 USER root
 RUN mkdir /runtheano/; chmod -R 777 /runtheano/
+
+# Check that we're actually using GPUs and print what tensorflow thinks it's using
+USER $NB_USER
+RUN python -c "from tensorflow.python.client import device_lib ; print(device_lib.list_local_devices())"
 
