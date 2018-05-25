@@ -42,8 +42,7 @@ ARG python_version=3.6
 RUN conda install -y python=${python_version} && \
     pip install --upgrade pip && \
     pip install \
-    sklearn_pandas \
-    tensorflow-gpu && \
+    sklearn_pandas  && \
     pip install https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp36-cp36m-linux_x86_64.whl && \
     conda install \
     bcolz \
@@ -65,6 +64,7 @@ RUN conda install -y python=${python_version} && \
     theano && \
     git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
     pip install git+git://github.com/keras-team/keras.git && \
+    pip install tensorflow-gpu && \
     conda clean -yt
 
 #ADD theanorc /home/keras/.theanorc
