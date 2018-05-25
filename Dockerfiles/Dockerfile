@@ -1,5 +1,5 @@
 
-# These are the CUDA and CUDAnn versions on fry
+# These are the CUDA and cuDNN versions on fry
 ARG cuda_version=8.0
 ARG cudnn_version=6
 FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-devel
@@ -41,8 +41,6 @@ ARG python_version=3.6
 
 RUN conda install -y python=${python_version} && \
     pip install --upgrade pip && \
-    pip install \
-    sklearn_pandas && \
     pip install https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp36-cp36m-linux_x86_64.whl && \
     conda install \
     bcolz \
@@ -62,6 +60,7 @@ RUN conda install -y python=${python_version} && \
     networkx \
     pymongo \
     theano && \
+    pip install sklearn_pandas && \
     git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
     pip install git+git://github.com/keras-team/keras.git && \
     conda install --yes tensorflow-gpu keras-gpu tensorflow-tensorboard && \
