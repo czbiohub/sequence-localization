@@ -92,6 +92,6 @@ USER root
 RUN mkdir /runtheano/; chmod -R 777 /runtheano/
 
 # Check that we're actually using GPUs and print what tensorflow thinks it's using
-USER $NB_USER
-RUN python -c "from tensorflow.python.client import device_lib ; print(device_lib.list_local_devices())"
+#USER $NB_USER
+#RUN python -c "from tensorflow.python.client import device_lib ; print(device_lib.list_local_devices())"
 
