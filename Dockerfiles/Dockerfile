@@ -62,7 +62,8 @@ RUN conda install -y python=${python_version} && \
     biopython \
     networkx \
     pymongo \
-    theano && \
+    theano \
+    seaborn && \
     git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
     pip install git+git://github.com/keras-team/keras.git && \
     conda clean -yt
