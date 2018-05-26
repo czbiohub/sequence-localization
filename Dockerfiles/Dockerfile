@@ -57,13 +57,13 @@ RUN conda install -y python=${python_version} && \
     pygpu \
     pyyaml \
     scikit-learn \
+    seaborn \
     six \
     # keras-genomics specific
     biopython \
     networkx \
     pymongo \
-    theano \
-    seaborn && \
+    theano && \
     git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
     pip install git+git://github.com/keras-team/keras.git && \
     conda clean -yt
