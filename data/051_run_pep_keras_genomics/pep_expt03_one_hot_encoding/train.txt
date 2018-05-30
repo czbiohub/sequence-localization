@@ -1,0 +1,2 @@
+/data/pep_expt03_one_hot_encoding/train.h5.batch1
+/data/pep_expt03_one_hot_encoding/train.h5.batch2

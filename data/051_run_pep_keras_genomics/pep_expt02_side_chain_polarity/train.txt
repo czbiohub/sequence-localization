@@ -1,0 +1,2 @@
+/data/pep_expt02_side_chain_polarity/train.h5.batch1
+/data/pep_expt02_side_chain_polarity/train.h5.batch2
