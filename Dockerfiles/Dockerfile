@@ -41,27 +41,31 @@ ARG python_version=3.6
 
 RUN conda install -y python=${python_version} && \
     pip install --upgrade pip && \
+    pip install future \
+    sklearn_pandas \
+    tensorflow-gpu && \
     pip install https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp36-cp36m-linux_x86_64.whl && \
     conda install \
-        bcolz \
-        h5py \
-        matplotlib \
-        mkl \
-        nose \
-        notebook \
-        Pillow \
-        pandas \
-        pygpu \
-        pyyaml \
-        scikit-learn \
-        six \
-        # keras-genomics specific
-        biopython \
-        networkx \
-        pymongo \
-        theano && \
-    pip install sklearn_pandas && \
-#    git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
+    bcolz \
+    h5py \
+    matplotlib \
+    mkl \
+    nose \
+    notebook \
+    Pillow \
+    pandas \
+    pygpu \
+    pyyaml \
+    scikit-learn \
+    seaborn \
+    six \
+    # keras-genomics specific
+    biopython \
+    networkx \
+    pymongo \
+    theano && \
+    git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
+
     pip install git+git://github.com/keras-team/keras.git && \
     conda install --yes tensorflow-gpu && \
     conda clean -yt
