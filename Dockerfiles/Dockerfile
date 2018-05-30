@@ -1,5 +1,5 @@
 
-# These are the CUDA and CUDAnn versions on fry
+# These are the CUDA and cuDNN versions on fry
 ARG cuda_version=8.0
 ARG cudnn_version=6
 FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-devel
@@ -65,7 +65,9 @@ RUN conda install -y python=${python_version} && \
     pymongo \
     theano && \
     git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
+
     pip install git+git://github.com/keras-team/keras.git && \
+    conda install --yes tensorflow-gpu && \
     conda clean -yt
 
 #ADD theanorc /home/keras/.theanorc
@@ -73,7 +75,8 @@ ENV PYTHONPATH='/src/:$PYTHONPATH'
 
 WORKDIR /src
 
-EXPOSE 8888
+# Expose Ports for TensorBoard (6006), Jupyter (8888)
+EXPOSE 6006 8888
 
 CMD jupyter notebook --port=8888 --ip=0.0.0.0
 
@@ -91,4 +94,8 @@ RUN cp /src/keras-genomics/main.py /src/
 
 USER root
 RUN mkdir /runtheano/; chmod -R 777 /runtheano/
+
+# Check that we're actually using GPUs and print what tensorflow thinks it's using
+#USER $NB_USER
+#RUN python -c "from tensorflow.python.client import device_lib ; print(device_lib.list_local_devices())"
 
