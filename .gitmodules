@@ -1,0 +1,3 @@
+[submodule "Keras-genomics"]
+	path = Keras-genomics
+	url = https://github.com/czbiohub/Keras-genomics
