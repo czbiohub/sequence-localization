@@ -1,0 +1,2 @@
+/data/pep_expt04_side_chain_class/train.h5.batch1
+/data/pep_expt04_side_chain_class/train.h5.batch2

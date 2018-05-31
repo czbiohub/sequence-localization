@@ -1,0 +1,2 @@
+/data/pep_expt01_molecular_weight/train.h5.batch1
+/data/pep_expt01_molecular_weight/train.h5.batch2
